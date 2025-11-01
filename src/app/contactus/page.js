@@ -1,9 +1,15 @@
 "use client";
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import MainNavbar from "@/components/mainNavbar";
 
 export default function ContactUs() {
   return (
+    <>
+    <Navbar />
+    <MainNavbar />
     <section className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-12">
       <div className="max-w-3xl w-full text-center mb-10">
         <h1 className="text-3xl font-bold text-[#004C99] mb-4">Contact Us</h1>
@@ -40,5 +46,7 @@ export default function ContactUs() {
         <p>© 2025 MGNREGA District Dashboard | All Rights Reserved</p>
       </div>
     </section>
+    <Footer />
+    </>
   );
 }

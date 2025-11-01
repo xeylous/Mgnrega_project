@@ -5,6 +5,7 @@ import MainNavbar from "@/components/mainNavbar";
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import ResultCard from "@/components/ResultCard";
+import VisionSection from "@/components/VisionSection";
 
 export default function Page() {
   const [searchResult, setSearchResult] = useState(null);
@@ -32,7 +33,7 @@ export default function Page() {
           </div>
         )}
       </main>
-
+<VisionSection />
       {/* 🔻 Footer stays pinned to bottom */}
       <Footer />
     </div>

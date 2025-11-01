@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-[#0066CC] text-white text-sm shadow-md">
-      <div className="flex justify-between items-center px-6 py-2 md:px-12 relative">
+      <div className="flex justify-between items-center px-6 py-1 md:px-12 relative">
         {/* Left Section */}
         <span className="font-semibold tracking-wide flex items-center gap-2">
           🇮🇳 <span className="uppercase hidden sm:inline">A Digital India Initiative</span>
