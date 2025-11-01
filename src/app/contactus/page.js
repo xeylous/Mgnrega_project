@@ -7,6 +7,7 @@ import MainNavbar from "@/components/mainNavbar";
 
 export default function ContactUs() {
   return (
+
     <>
     <Navbar />
     <MainNavbar />

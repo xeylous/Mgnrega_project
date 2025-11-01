@@ -5,7 +5,9 @@ import MainNavbar from "@/components/mainNavbar";
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import ResultCard from "@/components/ResultCard";
+import HeroMain from "@/components/HeroMain";
 import VisionSection from "@/components/VisionSection";
+
 
 export default function Page() {
   const [searchResult, setSearchResult] = useState(null);
@@ -16,6 +18,7 @@ export default function Page() {
       <div className="sticky top-0 z-50">
         <Navbar />
         <MainNavbar />
+        <HeroMain />
       </div>
 
       {/* 🧭 Main Content */}
