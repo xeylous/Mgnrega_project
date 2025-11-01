@@ -21,39 +21,51 @@ export default function Page() {
         <MainNavbar />
       </div>
 
-      {/* 🖼️ Hero Section with Continuous Scroll */}
+      {/* 🖼️ Hero Section with Continuous Infinite Scroll */}
       <section className="relative w-full h-[60vh] overflow-hidden bg-gradient-to-b from-white to-blue-50 flex items-center justify-center">
-        {/* Continuous Scroll Animation */}
         <style jsx>{`
+          .scroll-wrapper {
+            position: relative;
+            width: 200%;
+            display: flex;
+            animation: scroll 40s linear infinite;
+          }
+
           @keyframes scroll {
-            0% {
+            from {
               transform: translateX(0);
             }
-            100% {
+            to {
               transform: translateX(-50%);
             }
           }
-          .scroll-container {
+
+          .image-strip {
             display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
+            flex-shrink: 0;
+            width: 50%;
+            gap: 1.5rem;
           }
         `}</style>
 
-        {/* Continuous Scrolling Image Strip */}
-        <div className="flex w-[200%] scroll-container gap-6 px-10">
-          {[...images, ...images].map((src, i) => (
-            <div
-              key={i}
-              className="relative min-w-[250px] sm:min-w-[280px] md:min-w-[320px] h-[40vh] rounded-xl overflow-hidden shadow-lg transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
-            >
-              <Image
-                src={`/${src}`}
-                alt={`Banner ${i + 1}`}
-                fill
-                className="object-cover transition-transform duration-700 ease-in-out hover:scale-110"
-                priority
-              />
+        {/* Continuous Scroll Container */}
+        <div className="scroll-wrapper px-10">
+          {[0, 1].map((dup) => (
+            <div key={dup} className="image-strip">
+              {images.map((src, i) => (
+                <div
+                  key={`${dup}-${i}`}
+                  className="relative min-w-[250px] sm:min-w-[280px] md:min-w-[320px] h-[40vh] rounded-xl overflow-hidden shadow-lg transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
+                >
+                  <Image
+                    src={`/${src}`}
+                    alt={`Banner ${i + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-in-out hover:scale-110"
+                    priority
+                  />
+                </div>
+              ))}
             </div>
           ))}
         </div>
