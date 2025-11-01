@@ -24,7 +24,7 @@ export default function Navbar() {
   const decreaseFont = () => setFontSize((prev) => Math.max(prev - 2, 12));
 
   return (
-    <nav className="w-full bg-[#0066CC]  flex justify-between items-center px-6 py-2 text-white text-sm shadow-md">
+    <nav className="w-full bg-[#0066CC]  flex justify-between items-center px-6 py-0.5 text-white text-sm shadow-md">
       {/* Left Section */}
       <span className="font-semibold tracking-wide flex items-center gap-2 px-16 ">
         🇮🇳 <span className="uppercase">A Digital India Initiative</span>
