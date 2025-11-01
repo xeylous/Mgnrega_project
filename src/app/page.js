@@ -1,11 +1,18 @@
+import Footer from "@/components/Footer";
 import HouseholdDataDashboardState from "@/components/HouseholdDataDashboardState";
+import MainNavbar from "@/components/mainNavbar";
+import Navbar from "@/components/Navbar";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-  <h1 className="text-4xl text-blue-600 justify-center">This project is for MGNREGA</h1>
+      <Navbar />
+    
+  <MainNavbar/>
   <HouseholdDataDashboardState />
+   
+    <Footer/> 
     </>
   );
 }
