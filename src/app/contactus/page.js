@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactUs() {
   return (
+    
     <section className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-12">
       <div className="max-w-3xl w-full text-center mb-10">
         <h1 className="text-3xl font-bold text-[#004C99] mb-4">Contact Us</h1>

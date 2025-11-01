@@ -10,7 +10,7 @@ export default function MainNavbar() {
   const navItems = [
     { name: "HOME", href: "/" },
     { name: "DISTRICT PERFORMANCE", href: "/districtperformance" },
-    { name: "CONTACT US", href: "/contact" },
+    { name: "CONTACT US", href: "/contactus" },
     { name: "ABOUT", href: "/about" },
   ];
 
