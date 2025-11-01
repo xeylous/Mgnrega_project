@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import MainNavbar from "@/components/MainNavbar";
+import MainNavbar from "@/components/mainNavbar";
 import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import ResultCard from "@/components/ResultCard";
