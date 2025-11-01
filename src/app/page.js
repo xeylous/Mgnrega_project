@@ -6,6 +6,8 @@ import Navbar from "@/components/Navbar";
 import SearchBar from "@/components/SearchBar";
 import ResultCard from "@/components/ResultCard";
 import HeroMain from "@/components/HeroMain";
+import VisionSection from "@/components/VisionSection";
+
 
 export default function Page() {
   const [searchResult, setSearchResult] = useState(null);
@@ -20,7 +22,8 @@ export default function Page() {
       </div>
 
       {/* 🧭 Main Content */}
-      <main className="flex-grow flex flex-col items-center p-6 my-10">
+      <main className="flex-grow flex flex-col items-center p-6 my-10 bg-gray-200 rounded-xl shadow-sm max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold text-center text-underline text-[#1e3a8a] m-3 mb-5 flex items-center justify-center gap-2">Know How Your District Doing ?</h1>
         <SearchBar onResult={setSearchResult} />
 
         {searchResult && (
@@ -34,7 +37,7 @@ export default function Page() {
           </div>
         )}
       </main>
-
+<VisionSection />
       {/* 🔻 Footer stays pinned to bottom */}
       <Footer />
     </div>

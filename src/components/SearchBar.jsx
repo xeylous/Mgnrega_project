@@ -103,10 +103,10 @@ export default function SearchBar({ onResult }) {
   if (fetching) {
     return (
       <div className="flex flex-wrap justify-center gap-3 mb-6 w-full max-w-5xl animate-pulse">
-        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[120px] bg-gray-200 rounded-lg" />
+        <div className="h-10 w-[200px] bg-zinc-400 rounded-lg" />
+        <div className="h-10 w-[200px] bg-zinc-400 rounded-lg" />
+        <div className="h-10 w-[200px] bg-zinc-400 rounded-lg" />
+        <div className="h-10 w-[120px] bg-zinc-400 rounded-lg" />
       </div>
     );
   }
@@ -123,7 +123,7 @@ export default function SearchBar({ onResult }) {
         value={state}
         onChange={(e) => handleChange(setState, e.target.value)}
         className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
-                   focus:ring-2 focus:ring-[#1e3a8a]
+                   
                    w-full sm:w-[200px] lg:w-[240px]"
       >
         <option value="">Select State</option>
@@ -140,7 +140,7 @@ export default function SearchBar({ onResult }) {
         onChange={(e) => handleChange(setDistrict, e.target.value)}
         disabled={!state}
         className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
-                   focus:ring-2 focus:ring-[#1e3a8a]
+                   
                    w-full sm:w-[240px] lg:w-[280px] 
                    disabled:opacity-60"
       >
@@ -158,7 +158,7 @@ export default function SearchBar({ onResult }) {
         onChange={(e) => handleChange(setYear, e.target.value)}
         disabled={!state || !district}
         className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
-                   focus:ring-2 focus:ring-[#1e3a8a]
+                  
                    w-full sm:w-[180px] lg:w-[200px] 
                    disabled:opacity-60"
       >
