@@ -33,7 +33,7 @@ export default function MainNavbar() {
               Bharat Digital Dashboard
             </h1>
             <p className="text-sm text-gray-500">
-              Open Government Data (OGD) Platform India
+              Know Your District's Performance
             </p>
           </div>
         </div>
