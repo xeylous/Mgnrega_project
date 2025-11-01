@@ -190,9 +190,12 @@ export default function CompareDistricts() {
   };
 
   return (
+    <>
+    <h1 className="text-3xl font-bold text-center text-underline text-[#1e3a8a] m-3 flex items-center justify-center gap-2">Know How Your District Doing ?</h1>
+    <div className="w-32 h-[3px] bg-yellow-400 mx-auto mt-2 rounded"></div>
     <div className="p-6 bg-gray-200 rounded-xl shadow-sm max-w-7xl mx-auto my-8">
       <h2 className="text-2xl font-bold text-center text-[#1e3a8a] mb-6 flex items-center justify-center gap-2">
-        <BarChart3 className="text-[#1e3a8a]" /> Compare Districts
+        <BarChart3 className="" /> Compare Districts
       </h2>
 
       {/* Input Section */}
@@ -352,4 +355,5 @@ export default function CompareDistricts() {
         </div>
       )}
     </div>
+    </>
   )}

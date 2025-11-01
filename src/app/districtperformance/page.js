@@ -1,5 +1,6 @@
 "use client";
 import CompareDistricts from "@/components/CompareDistricts";
+import DistrictComparisonFAQ from "@/components/DistrictComparisonFAQ";
 import Footer from "@/components/Footer";
 import MainNavbar from "@/components/mainNavbar";
 import Navbar from "@/components/Navbar";
@@ -13,6 +14,7 @@ export default function Page() {
     <Navbar />
     <MainNavbar />
     <CompareDistricts />
+    <DistrictComparisonFAQ />
     <Footer />
     </>
   );
