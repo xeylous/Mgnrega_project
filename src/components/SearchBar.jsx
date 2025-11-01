@@ -13,13 +13,13 @@ export default function SearchBar({ onResult }) {
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
 
-  // ✅ Fetch states on load
+  // ✅ Fetch states
   useEffect(() => {
     async function loadInitialData() {
       try {
-        const stateRes = await fetch("/api/state");
-        const stateData = await stateRes.json();
-        setStates(stateData.states || []);
+        const res = await fetch("/api/state");
+        const data = await res.json();
+        setStates(data.states || []);
       } catch (err) {
         console.error("Error fetching states:", err);
       } finally {
@@ -50,37 +50,33 @@ export default function SearchBar({ onResult }) {
         setDistricts(districtData.districts || []);
         setYears(yearData.years || []);
       } catch (err) {
-        console.error("Error loading districts/years:", err);
+        console.error("Error loading data:", err);
       }
     }
 
     loadStateData();
   }, [state]);
 
-  // ✅ Handle Search Button Click
+  // ✅ Handle search
   const handleSearch = async () => {
     if (!state || !district || !year) return;
     setLoading(true);
 
     try {
-      // Fetch current year data
       const res = await fetch(`/api/district/${state}/${year}`);
       const currentData = await res.json();
 
-      // Extract matching district data
       const districtData = Array.isArray(currentData.data)
         ? currentData.data.find(
             (d) => d.district_name?.toLowerCase() === district.toLowerCase()
           )
         : currentData.data;
 
-      // Fetch historical data
       const historyRes = await fetch(
         `/api/district/${state}/history?district=${encodeURIComponent(district)}`
       );
       const historyData = await historyRes.json();
 
-      // ✅ Send back result
       onResult({
         state,
         district,
@@ -97,30 +93,38 @@ export default function SearchBar({ onResult }) {
     }
   };
 
-  // ✅ Remove existing result when selection changes
+  // ✅ Clear results on change
   const handleChange = (setter, value) => {
     setter(value);
-    onResult(null); // <-- Clear previous result card
+    onResult(null);
   };
 
+  // ✅ Skeleton while fetching
   if (fetching) {
     return (
-      <div className="flex flex-wrap justify-center gap-3 mb-6 w-full max-w-3xl animate-pulse">
-        <div className="h-10 w-[30%] min-w-[180px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[30%] min-w-[180px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[30%] min-w-[180px] bg-gray-200 rounded-lg" />
-        <div className="h-10 w-[100px] bg-gray-200 rounded-lg" />
+      <div className="flex flex-wrap justify-center gap-3 mb-6 w-full max-w-5xl animate-pulse">
+        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
+        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
+        <div className="h-10 w-[200px] bg-gray-200 rounded-lg" />
+        <div className="h-10 w-[120px] bg-gray-200 rounded-lg" />
       </div>
     );
   }
 
   return (
-    <div className="flex flex-wrap justify-center gap-3 mb-6 w-full max-w-3xl">
+    <div
+      className="
+        flex flex-wrap lg:flex-nowrap justify-center items-center gap-4 
+        mb-6 w-full max-w-5xl
+      "
+    >
       {/* State Dropdown */}
       <select
         value={state}
         onChange={(e) => handleChange(setState, e.target.value)}
-        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm focus:ring-2 focus:ring-[#1e3a8a] w-[30%] min-w-[180px]"
+        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
+                   focus:ring-2 focus:ring-[#1e3a8a]
+                   w-full sm:w-[200px] lg:w-[240px]"
       >
         <option value="">Select State</option>
         {states.map((s) => (
@@ -135,7 +139,10 @@ export default function SearchBar({ onResult }) {
         value={district}
         onChange={(e) => handleChange(setDistrict, e.target.value)}
         disabled={!state}
-        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm focus:ring-2 focus:ring-[#1e3a8a] w-[40%] min-w-[180px] disabled:opacity-60"
+        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
+                   focus:ring-2 focus:ring-[#1e3a8a]
+                   w-full sm:w-[240px] lg:w-[280px] 
+                   disabled:opacity-60"
       >
         <option value="">Select District</option>
         {districts.map((d) => (
@@ -150,7 +157,10 @@ export default function SearchBar({ onResult }) {
         value={year}
         onChange={(e) => handleChange(setYear, e.target.value)}
         disabled={!state || !district}
-        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm focus:ring-2 focus:ring-[#1e3a8a] w-[30%] min-w-[180px] disabled:opacity-60"
+        className="border rounded-lg px-3 py-2 text-gray-800 shadow-sm 
+                   focus:ring-2 focus:ring-[#1e3a8a]
+                   w-full sm:w-[180px] lg:w-[200px] 
+                   disabled:opacity-60"
       >
         <option value="">Select Year</option>
         {years.map((y) => (
@@ -166,9 +176,14 @@ export default function SearchBar({ onResult }) {
         disabled={loading || !state || !district || !year}
         className={`${
           loading ? "bg-gray-400" : "bg-[#1e3a8a] hover:bg-[#16306e]"
-        } text-white px-5 py-2 rounded-lg flex items-center gap-2 transition-all`}
+        } text-white px-5 py-2 rounded-lg flex items-center justify-center gap-2 
+           transition-all w-full sm:w-[150px] lg:w-[160px]`}
       >
-        {loading ? <Loader2 className="animate-spin" size={18} /> : <Search size={18} />}
+        {loading ? (
+          <Loader2 className="animate-spin" size={18} />
+        ) : (
+          <Search size={18} />
+        )}
         {loading ? "Loading..." : "Search"}
       </button>
     </div>
