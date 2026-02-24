@@ -1,3 +1,4 @@
 I made this project using nextjs and tailwind under the student fellowship program, this tell the condition of your district and help you to compaee your district with another district, in factor of everything provided by data.gov.in under Mahatma Gandhi Nrega.
 All data is from nic.gov.data.in
 i am updating it shortly.
+*Due of less availability of resources i can't update data of all states*
